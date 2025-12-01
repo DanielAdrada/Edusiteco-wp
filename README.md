@@ -1,6 +1,6 @@
 # Edusiteco-wp
 Plugin institucional + Tema adaptado para WordPress  
-Cumple WCAG 2.1 • NTC 5854:2024 (ITA) • Lineamientos GOV.CO
+Cumple WCAG 2.1 • ITA 2024 • Lineamientos GOV.CO
 
 ---
 
