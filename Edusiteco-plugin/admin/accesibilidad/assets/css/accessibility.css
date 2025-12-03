@@ -1,0 +1,216 @@
+/* ====== Panel flotante ====== */
+.accessibility-panel {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 70px; /* más cerca del botón */
+    transform: translateY(-50%);
+    flex-direction: column;
+    align-items: stretch;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 8px; /* reducido */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+    z-index: 99999;
+    max-height: 70vh; /* 👈 evita que se salga de pantalla */
+    overflow-y: auto; /* 👈 permite scroll si hace falta */
+}
+
+/* panel hacia la izquierda */
+.accessibility-panel.open-left {
+    left: auto;
+    right: 70px;
+}
+
+/* Cuando se abre hacia arriba */
+.accessibility-panel.open-up {
+    bottom: 80px;
+    top: auto;
+    transform: none;
+}
+
+/* ====== Botones del panel ====== */
+/* Botones compactos */
+.acc-btn {
+    width: 140px;           /* 👈 reducido */
+    text-align: center;
+    background: #f5f5f5;
+    border: none;
+    padding: 8px 6px;       /* 👈 reducido */
+    border-radius: 8px;     /* 👈 menos grande */
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 13px;        /* 👈 más compacto */
+    transition: all 0.2s ease;
+    margin-bottom: 5px;     /* 👈 menos espacio */
+    line-height: 1.2;       /* 👈 mejor acomodo del texto */
+}
+
+/* Último botón sin margen inferior */
+.acc-btn:last-child {
+    margin-bottom: 0;
+}
+
+/* Hover y foco */
+.acc-btn:hover,
+.acc-btn:focus {
+    background: #4a90e2;
+    color: white;
+    outline: none;
+}
+
+/* Botón de restablecer */
+.reset-btn {
+    background: #ff6b6b;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #d64545;
+}
+
+/* ====== Botón principal flotante ====== */
+#accessibility-toggle {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    cursor: grab;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+#accessibility-toggle:active {
+    transform: scale(1.1);
+}
+
+/* ====== Contenedor principal ====== */
+.accessibility-menu {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    font-family: sans-serif;
+    user-select: none;
+}
+
+/* ====== Foco visible ====== */
+.acc-btn:focus,
+#accessibility-toggle:focus {
+    outline: 3px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+/* ====== Modos visuales ====== */
+body.daltonic {
+    filter: hue-rotate(90deg);
+}
+
+body.gray {
+    filter: grayscale(100%);
+}
+
+body.high-contrast {
+    filter: contrast(150%) brightness(110%);
+}
+
+/* Ajuste automático del panel según posición */
+.accessibility-panel.open-left {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.accessibility-panel.open-up {
+    transform-origin: bottom;
+}
+/* ===== ESPACIADO ===== */
+body.spacing-big {
+    letter-spacing: 2px !important;
+    line-height: 1.8 !important;
+}
+
+body.spacing-normal {
+    letter-spacing: normal !important;
+    line-height: normal !important;
+}
+
+/* ===== FUENTE DISLÉXICOS ===== */
+body.dyslexia-font {
+    font-family: 'OpenDyslexic', Arial, sans-serif !important;
+}
+
+/* Cargar fuente OpenDyslexic */
+@font-face {
+    font-family: 'OpenDyslexic';
+    src: url('https://cdn.jsdelivr.net/gh/antijingoist/open-dyslexic/compiled/OpenDyslexic-Regular.woff') format('woff');
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
+/* ===== CURSOR GRANDE ===== */
+body.big-cursor,
+body.big-cursor * {
+    cursor: url('https://cdn-icons-png.flaticon.com/512/1828/1828774.png') 24 24, auto !important;
+}
+
+
+
+
+/* ===== LÍNEA DE LECTURA ===== */
+#readingLine {
+    display: none;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(255, 255, 0, 0.25);
+    pointer-events: none;
+    z-index: 999999;
+}
+
+/* ===== RESALTAR ENLACES ===== */
+body.highlight-links a {
+    background: yellow;
+    color: black !important;
+    text-decoration: underline !important;
+}
+
+/* ===== CENTRO DE RELEVO ===== */
+#relayModal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    z-index: 999999;
+}
+/* ===== FUENTE DE SEÑAS – ASL FINGERSPELLING ===== */
+/* ===== FUENTE DE SEÑAS REAL (ASL) ===== */
+@font-face {
+    font-family: 'ASLFingerSpelling';
+    src: url('https://cdn.jsdelivr.net/gh/shablanm/asl-font@main/asl.woff2') format('woff2');
+    font-display: swap;
+}
+
+/* Fuerza la fuente en absolutamente TODO */
+body.sign-font,
+body.sign-font * ,
+body.sign-font *::before,
+body.sign-font *::after {
+    font-family: 'ASLFingerSpelling' !important;
+    font-size: 22px !important;
+    letter-spacing: 6px !important;
+    line-height: 1.4 !important;
+}
+
+
